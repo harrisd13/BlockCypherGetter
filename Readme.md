@@ -26,3 +26,6 @@ which is currently no more than 3 requests per second and 100 requests per hour.
 ## Database
 MongoDB is used to store blockchain data. It was chosen because its high performance on time-series data. It includes
 an additional index created for accessing data in descending order.
+
+## Health checks
+There's a health check for mongodb, it can be accessed using /health endpoint

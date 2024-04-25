@@ -7,6 +7,8 @@ EXPOSE 8080
 EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+RUN apt-get install -y curl
+HEALTHCHECK CMD curl --fail http://localhost:8080/health || exit 1
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["WebApi/WebApi.csproj", "WebApi/"]
