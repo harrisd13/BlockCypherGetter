@@ -1,0 +1,7 @@
+@WebApi_HostAddress = http://localhost:5260
+@name = btc_main
+
+GET {{WebApi_HostAddress}}/Blockchain/{{name}}/
+Accept: application/json
+
+###
