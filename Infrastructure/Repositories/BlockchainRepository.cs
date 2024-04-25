@@ -18,7 +18,7 @@ public class BlockchainRepository : IBlockchainRepository
         _collection = mongoDatabase.GetCollection<BlockchainDocument>("blockchain");
     }
 
-    public async Task<List<BlockchainBase>> List(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token)
+    public async Task<IEnumerable<BlockchainBase>> List(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token)
     {
         var filter = Builders<BlockchainDocument>.Filter.Eq(d => d.Metadata.Name, name);
         
@@ -44,7 +44,7 @@ public class BlockchainRepository : IBlockchainRepository
         {
             CreatedAt = doc.CreatedAt,
             Data = doc.Data
-        }).ToList();
+        });
     }
 
     public async Task Add(Blockchain blockchain, CancellationToken token)

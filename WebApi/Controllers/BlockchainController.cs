@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using Application.BlockchainQuery;
+using Application.BlockchainQuery.Queries;
 using Domain.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -13,17 +15,17 @@ namespace WebApi.Controllers;
 [Produces("application/json")]
 public class BlockchainController : ControllerBase
 {
-    private readonly IBlockchainQueryService _blockchainQueryService;
+    private readonly IMediator _mediator;
     private readonly ILogger<BlockchainController> _logger;
 
     /// <summary>
     /// Blockchain controller. Uses query service to access blockchain data
     /// </summary>
-    /// <param name="blockchainQueryService"></param>
+    /// <param name="mediator"></param>
     /// <param name="logger"></param>
-    public BlockchainController(IBlockchainQueryService blockchainQueryService, ILogger<BlockchainController> logger)
+    public BlockchainController(ILogger<BlockchainController> logger, IMediator mediator)
     {
-        _blockchainQueryService = blockchainQueryService;
+        _mediator = mediator;
         _logger = logger;
     }
 
@@ -44,13 +46,22 @@ public class BlockchainController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get([Required] string name, DateTime? from, DateTime? to, int? limit, CancellationToken token)
     {
-        if (!_blockchainQueryService.IsValidName(name))
+        if (!await _mediator.Send(new BlockchainNameValidate()
+            {
+                Name = name
+            }))
         {
             _logger.LogWarning($"Invalid blockchain name was requested: {name}");
             return NotFound();
         }
 
-        var result = await _blockchainQueryService.ListBlockchains(name, from, to, limit, token);
+        var result = await _mediator.Send(new GetBlockchainsQuery()
+        {
+            Name = name,
+            From = from,
+            To = to,
+            Limit = limit
+        }, token);
 
         return Ok(result);
     }

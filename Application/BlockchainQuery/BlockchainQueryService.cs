@@ -16,7 +16,7 @@ public class BlockchainQueryService : IBlockchainQueryService
             .GetChildren().Select(c => c["Name"]).ToList();
     }
     
-    public Task<List<BlockchainBase>> ListBlockchains(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token)
+    public Task<IEnumerable<BlockchainBase>> ListBlockchains(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token)
     {
         return _repository.List(name, from, to, limit, token);
     }

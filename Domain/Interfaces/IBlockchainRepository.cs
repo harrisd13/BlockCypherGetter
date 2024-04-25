@@ -4,7 +4,7 @@ namespace Domain.Interfaces;
 
 public interface IBlockchainRepository
 {
-    Task<List<BlockchainBase>> List(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token);
+    Task<IEnumerable<BlockchainBase>> List(string name, DateTime? from, DateTime? to, int? limit, CancellationToken token);
 
     Task Add(Blockchain blockchain, CancellationToken token);
 
