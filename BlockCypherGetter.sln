@@ -20,6 +20,10 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlockchainWorker", "BlockchainWorker\BlockchainWorker.csproj", "{83214611-4957-4BA7-94E6-04500B829A1A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{25C14729-7267-4C67-88A8-CE2595C8C0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A17F3FB2-2D75-4CE5-839A-9672E797C362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,10 @@ Global
 		{83214611-4957-4BA7-94E6-04500B829A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83214611-4957-4BA7-94E6-04500B829A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83214611-4957-4BA7-94E6-04500B829A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17F3FB2-2D75-4CE5-839A-9672E797C362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A17F3FB2-2D75-4CE5-839A-9672E797C362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17F3FB2-2D75-4CE5-839A-9672E797C362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A17F3FB2-2D75-4CE5-839A-9672E797C362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,7 @@ Global
 		{EDD782FA-92EE-4300-8CA5-7FDDD0DA0D59} = {83F76C26-FD91-4F6F-A4EB-7D4799C1BF20}
 		{8DFACF69-5896-4D27-9892-7F79CE286942} = {83F76C26-FD91-4F6F-A4EB-7D4799C1BF20}
 		{83214611-4957-4BA7-94E6-04500B829A1A} = {83F76C26-FD91-4F6F-A4EB-7D4799C1BF20}
+		{A17F3FB2-2D75-4CE5-839A-9672E797C362} = {25C14729-7267-4C67-88A8-CE2595C8C0B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAAA8B89-73F9-4EB8-934F-EBF742C8ADE8}
